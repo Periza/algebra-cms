@@ -13,20 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function(Blueprint $table) {
+        Schema::create('menu_post', function(Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('menu_id')->nullable()->constrained('menus')->onDelete('set null');
+            $table->foreignId('post_id')->nullable()->constrained('posts')->onDelete('set null');
             $table->string('name');
-            $table->timestamps();
+            $table->integer('order');
         });
-
-        $roles = [
-            ['name' => 'Administrator', 'created_at' => now()],
-            ['name' => 'Editor', 'created_at' => now()],
-            ['name' => 'Journalist', 'created_at' => now()],
-            ['name' => 'Guest', 'created_at' => now()]
-        ];
-
-        DB::table('roles')->insert($roles);
     }
 
     /**
@@ -36,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('menu_post');
     }
 };

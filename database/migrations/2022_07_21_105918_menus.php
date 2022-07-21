@@ -13,23 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('menus', function(Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
 
-        $adminUser = ['name' => 'admin', 'email' => 'admin@email.com', 'email_verified_at' => now(), 'password' => Hash::make('adminadmin'), 'created_at' => now()];
-
-        
-        DB::table('users')->insert($adminUser);
-
-
+        $studyTypes = [
+            ['name' => 'About us', 'created_at' => now()],
+            ['name' => 'News', 'created_at' => now()],
+            ['name' => 'Contact', 'created_at' => now()]
+        ];
     }
+
 
     /**
      * Reverse the migrations.
@@ -38,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('menus');
     }
 };
