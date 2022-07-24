@@ -11,7 +11,8 @@
                 <th>Uredi</th>
                 <th>Obriši</th>
             </tr>
-            @foreach ($roles as $role)
+        </thead>
+        @foreach ($roles as $role)
                 <tr>
                     <td>{{ $role->id}}</td>
                     <td>{{ $role->name}}</td>
@@ -24,6 +25,7 @@
                     </td>
                 </tr>
             @endforeach
-        </thead>
+        
     </table>
+    <a type="button" class="btn btn-secondary" href="/roles/create">ADD ROLE</a>
 </div>

@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', []);
+
+// ROLES
 Route::get('/roles', [AdminController::class, 'getRolesView']);
 Route::get('/roles/{id}/edit', [AdminController::class, 'editRole']);
 Route::put('/roles/{id}/edit', [AdminController::class, 'update'])->name('editRole');
