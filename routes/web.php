@@ -15,3 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/roles', [AdminController::class, 'getRolesView']);
+Route::get('/roles/{id}/edit', [AdminController::class, 'editRole']);
+Route::put('/roles/{id}/edit', [AdminController::class, 'update'])->name('editRole');
+Route::get('/roles/create', [AdminController::class, 'newRole']);
+Route::post('/roles/create', [AdminController::class, 'store'])->name('storeRole');
+Route::delete('/roles/{id}', [AdminController::class, 'delete'])->name('roleDelete');
