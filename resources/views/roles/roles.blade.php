@@ -4,7 +4,7 @@
 <div id="role_table">
 @section('title', 'Roles')
     <table class="table">
-        <thead>
+        <thead class="bg-dark text-light">
             <tr>
                 <th>ID</th>
                 <th>Naziv</th>
@@ -18,7 +18,7 @@
                     <td>{{ $role->name}}</td>
                     <td><a type="button" class="btn btn-primary" href="/roles/{{$role->id}}/edit">EDIT</a></td>
                     <td>
-                        {!!Form::open(['route' => ['roleDelete', $role->id], 'method' => 'POST'])!!}
+                        {!!Form::open(['route' => ['roleDelete', $role], 'method' => 'POST'])!!}
                             {{Form::hidden('_method', 'DELETE')}}
                             {{Form::submit('DELETE', ['class' => 'btn btn-danger'])}}
                         {!!Form::close()!!}

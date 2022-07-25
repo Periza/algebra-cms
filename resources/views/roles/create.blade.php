@@ -10,6 +10,6 @@
             {{Form::label('name', 'Name')}}
             {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Name'])}}
         </div>
-        {{Form::submit('Add role', ['class' => 'btn btn-primary'])}}
+        {{Form::button("<i class='bi bi-save'></i>SAVE", ['type' => 'submit', 'class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection

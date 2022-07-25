@@ -17,7 +17,6 @@ class AdminController extends Controller
     }
 
     public function getAdministrationView() {
-        $nonAdminUsers = User::where('role_id', '=', 'null')->orderBy('created_at')->get();
         $nonAdminUsers = User::get();
         return view('administration', ['users' => $nonAdminUsers, 'roles' => Role::get()]);
     }
@@ -30,11 +29,6 @@ class AdminController extends Controller
         return view('roles.create');
     }
 
-    public function editRole($id) {
-        $role = Role::find($id);
-        return view('roles.edit', ['role' => $role]);
-    }
-
     public function store(RoleRequest $request) {
         // Create role
         $role = new Role;
@@ -44,29 +38,26 @@ class AdminController extends Controller
         return redirect('roles')->with('success', 'Role added!');
     }
 
-    public function edit($id) {
-        $role = Role::find($id);
+    public function edit(Role $role) {
         return view('roles.edit', ['role' => $role]);
     }
 
-    public function update(RoleRequest $request, $id) {
-        $role = Role::find($id);
+    public function update(RoleRequest $request, Role $role) {
         $role->name = $request->name;
         $role->save();
 
         return redirect('roles')->with('success', 'Post updated!');
     }
 
-    public function roleInsert(Request $request) {
+    public function roleInsert(RoleRequest $request) {
         $role = new Role;
         $role->name = $request->name;
         $role->save();
         return redirect('/roles');
     }
 
-    public function delete($id) {
-        $role = Role::find($id);
-        $role->delete();
-        return redirect('roles')->with('success', 'Role deleted!');;
+    public function delete(Role $role) {
+        $role->delete($role);
+        return redirect('roles')->with('success', 'Role deleted!');
     }
 }
