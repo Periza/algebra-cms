@@ -1,8 +1,12 @@
 
 @extends('layouts.app')
 
-<div id="role_table">
 @section('title', 'Roles')
+
+
+
+@section('content')
+<div id="role_table">
     <table class="table">
         <thead class="bg-dark text-light">
             <tr>
@@ -29,3 +33,4 @@
     </table>
     <a type="button" class="btn btn-secondary" href="/roles/create">ADD ROLE</a>
 </div>
+@endsection

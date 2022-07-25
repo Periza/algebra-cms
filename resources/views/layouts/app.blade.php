@@ -14,8 +14,12 @@
 </head>
 
 <body>
-    @include('inc.navbar')
-    @include('inc.messages')
-    @yield('content')
+    <div id="app">
+        @include('inc.navbar')
+        <div class=container>
+            @include('inc.messages')
+            @yield('content')
+        </div>
+    </div>
 </body>
 </html>
