@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Repositories\PostRepository;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -24,7 +25,7 @@ class PostController extends Controller
             $postsForView = $this->posts->forUser($request->user());
         }
         
-        return view('posts', ['posts' => $postsForView]);
+        return view('posts.posts', ['posts' => $postsForView]);
     }
 
     public function getNewPostView() {

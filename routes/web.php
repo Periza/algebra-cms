@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
@@ -39,6 +40,11 @@ Route::group(['prefix' => 'users'], function() {
     Route::put('/{user}/role', [AdminController::class, 'updateUserRole'])->name('editRole');
     Route::post('/add', [UserController::class], 'addUser' )->name('adduser');
     Route::delete('/{user}', [AdminController::class, 'deleteUser'])->name('deleteUser');
+});
+
+// POSTS
+Route::group(['prefix' => 'posts'], function() {
+    Route::get('/', [PostController::class, 'getPostsView'])->name('postsView');
 });
 
 Auth::routes();
