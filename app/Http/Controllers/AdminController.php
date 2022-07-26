@@ -65,4 +65,10 @@ class AdminController extends Controller
         $user->delete();
         return redirect('administration')->with('success', 'User deleted!');
     }
+
+    public function updateUserRole(User $user, Request $request) {
+        $user->role_id = $request->role;
+        $user->save();
+        return redirect('administration')->with('success', 'Role for '.$user->name.' updated!');
+    }
 }

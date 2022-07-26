@@ -27,7 +27,7 @@
                     <div>{{$user->email}}</div>
                 </td>
                 <td>
-                    <form id="update-role-form-{{$user->id}}" action="{{ route('editRole', $user->id)}}" method="POST">
+                    <form id="update-role-form-{{$user->id}}" action="{{ route('editRole', $user)}}" method="POST">
                         {{csrf_field() }}
                         <input type="hidden" name="_method" value="PUT">
 
@@ -43,7 +43,7 @@
                     </form>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary">SAVE</button>
+                    <a type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('update-role-form-{{$user->id}}').submit()">SAVE</a>
                 </td>
                 <td>
                     <a type="button" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete-user-form-{{$user->id}}').submit()">DELETE</a>

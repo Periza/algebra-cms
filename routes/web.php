@@ -36,7 +36,7 @@ Route::delete('/roles/{role}', [AdminController::class, 'delete'])->name('roleDe
 
 // USERS
 Route::group(['prefix' => 'users'], function() {
-    Route::put('/{user_id}/role', [UserController::class, 'updateUserRole'])->name('updateRole');
+    Route::put('/{user}/role', [AdminController::class, 'updateUserRole'])->name('editRole');
     Route::post('/add', [UserController::class], 'addUser' )->name('adduser');
     Route::delete('/{user}', [AdminController::class, 'deleteUser'])->name('deleteUser');
 });
