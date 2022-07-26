@@ -63,7 +63,7 @@ class AdminController extends Controller
 
     public function deleteUser(User $user) {
         $user->delete();
-        return redirect('administration')->with('success', 'User deleted!');
+        return redirect('administration')->with('success', 'User ' .$user->name.' deleted!');
     }
 
     public function updateUserRole(User $user, Request $request) {

@@ -22,5 +22,13 @@
             @yield('content')
         </div>
     </div>
+    
+    <script defer>
+        // remove messages after some time
+        setTimeout(function() {
+            const collection = document.getElementsByClassName("alert");
+            console.log(collection);
+        }, 2000);
+    </script>
 </body>
 </html>
