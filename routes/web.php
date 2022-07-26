@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', []);
+Route::get('/home', function() {
+    return view('home');
+})->name('home');
+Route::get('/', function() {
+    return view('home');
+});
+
+Route::get('/administration', [AdminController::class, 'getAdministrationView'])->name('administration');
 
 // ROLES
 Route::get('/roles', [AdminController::class, 'getRolesView']);
@@ -29,7 +38,8 @@ Route::delete('/roles/{role}', [AdminController::class, 'delete'])->name('roleDe
 Route::group(['prefix' => 'users'], function() {
     Route::put('/{user_id}/role', [UserController::class, 'updateUserRole'])->name('updateRole');
     Route::post('/add', [UserController::class], 'addUser' )->name('adduser');
+    Route::delete('/{user}', [AdminController::class, 'deleteUser'])->name('deleteUser');
 });
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+/* Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */

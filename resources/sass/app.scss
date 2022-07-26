@@ -7,10 +7,16 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
-#role_table {
-    margin: 15vmin;
+table {
+    margin-top: 15vh;
     a {
         text-decoration: none;
         color: white;
     }
+}
+
+.navbar a {
+    text-decoration: none;
+    margin-left: 2vw;
+    margin-right: 2vw;
 }

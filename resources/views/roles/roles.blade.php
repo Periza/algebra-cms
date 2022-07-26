@@ -11,9 +11,9 @@
         <thead class="bg-dark text-light">
             <tr>
                 <th>ID</th>
-                <th>Naziv</th>
-                <th>Uredi</th>
-                <th>Obriši</th>
+                <th>NAME</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
             </tr>
         </thead>
         @foreach ($roles as $role)

@@ -12,8 +12,8 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        /* $this->middleware('auth');
-        $this->middleware('admin'); */
+        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     public function getAdministrationView() {
@@ -59,5 +59,10 @@ class AdminController extends Controller
     public function delete(Role $role) {
         $role->delete($role);
         return redirect('roles')->with('success', 'Role deleted!');
+    }
+
+    public function deleteUser(User $user) {
+        $user->delete();
+        return redirect('administration')->with('success', 'User deleted!');
     }
 }
