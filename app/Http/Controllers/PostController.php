@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Repositories\PostRepository;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,10 +30,10 @@ class PostController extends Controller
     }
 
     public function getNewPostView() {
-        return view('newpost');
+        return view('posts.newpost');
     }
 
-    public function saveNewPost(Request $request) {
+    public function saveNewPost(PostRequest $request) {
         $post = new Post();
         $post->name = $request->name;
         $post->description = $request->description;
@@ -44,6 +45,39 @@ class PostController extends Controller
         $file->move($destinationPath, $post->name.'_'.$file->getClientOriginalName());
 
         $post->save();
+
+        return redirect(route('postsView'))->with('success', 'Post added!');
+    }
+
+    public function savePost(Request $request, Post $post) {
+        $post->name = $request->name;
+        $post->description = $request->description;
+
+        dd($post->id, $request->id);
+
+        $post->user_id = Auth::user()->getId();
+        $file = $request->file('image');
+        $destinationPath = '../public/uploads';
+        $post->image = $post->name.'_'.$file->getClientOriginalName();
+        $file->move($destinationPath, $post->name.'_'.$file->getClientOriginalName());
+
+        $post->save();
+
+        return redirect(route('postsView'))->with('success', 'Post '.$post->name.' saved!');
+
+    }
+
+    public function editPostView(Post $post) {
+        return view('posts.editpost', ['post' => $post]);
+    }
+
+    public function postDetails(Post $post) {
+        return view('posts.post', ['post' => $post]);
+    }
+
+    public function deletePost(Post $post) {
+        $post->delete();
+        return redirect(route('postsView'))->with('success', 'Post '.$post->name.' deleted!');
     }
 
 }

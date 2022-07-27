@@ -45,6 +45,12 @@ Route::group(['prefix' => 'users'], function() {
 // POSTS
 Route::group(['prefix' => 'posts'], function() {
     Route::get('/', [PostController::class, 'getPostsView'])->name('postsView');
+    Route::get('details/{post}', [PostController::class, 'postDetails'])->name('postDetails');
+    Route::get('/newpost', [PostController::class, 'getNewPostView'])->name('newPostView');
+    Route::get('/{post}/edit', [PostController::class, 'editPostView'])->name('editPostView');
+    Route::put('/{post}/edit', [PostController::class, 'savePost'])->name('editPost');;
+    Route::post('/newpost', [PostController::class, 'saveNewPost'])->name('newPost');
+    Route::delete('/{post}', [PostController::class, 'deletePost'])->name('deletePost');
 });
 
 Auth::routes();

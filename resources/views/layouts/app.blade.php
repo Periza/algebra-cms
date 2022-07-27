@@ -22,7 +22,6 @@
             @yield('content')
         </div>
     </div>
-    
     <script defer>
         // remove messages after some time
         setTimeout(function() {
