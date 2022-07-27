@@ -57,4 +57,9 @@
         @endforeach
     </tbody>
 </table>
+@if(Auth::user()->role != null && Auth::user()->role->id == 1)
+        <a class="btn btn-xs btn-info pull-right" href="{{ route('newMenu') }}">NEW MENU</a>
+
+        <a class="btn btn-xs btn-info pull-right" href="{{ route('addPostToMenu') }}">ADD POST TO MENU</a>
+    @endif
 @endsection

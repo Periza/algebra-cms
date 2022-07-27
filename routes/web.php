@@ -55,7 +55,6 @@ Route::group(['prefix' => 'posts'], function() {
 });
 
 Auth::routes();
-/* Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
 
 Route::group(['prefix' => 'menus'], function() {
     Route::get('/', [MenuController::class, 'getMenusView'])->name('menus');
@@ -69,3 +68,6 @@ Route::group(['prefix' => 'menus'], function() {
 });
 
 Route::delete('/deletePost/{menu}/{post}', [MenuController::class, 'deletePostFromMenu'])->name('deletePostFromMenu');
+
+Route::get('/addPostToMenu', 'App\Http\Controllers\MenuController@addPostToMenuView')->name('addPostToMenu');
+
