@@ -45,7 +45,13 @@
                     </div>
                 </td>
                 <td>
-                    <div>DELETE POST FROM MENU</div>
+                    @foreach($menu->posts as $menuPost)
+                    <form action="{{route('deletePostFromMenu', [$menu, $post])}}" method="POST">
+                        {{ csrf_field()}}
+                        <input type="hidden" name="_method", value="DELETE">
+                        <button type="submit" class="btn btn-warning">DELETE POST FROM MENU</button>
+                    </form>
+                    @endforeach
                 </td>
             </tr>
         @endforeach

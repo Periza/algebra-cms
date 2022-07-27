@@ -67,3 +67,5 @@ Route::group(['prefix' => 'menus'], function() {
     Route::delete('/{menu}', [MenuController::class, 'deleteMenu'])->name('deleteMenu');
     Route::get('/details/{post}', [PostController::class, 'postDetails']);
 });
+
+Route::delete('/deletePost/{menu}/{post}', [MenuController::class, 'deletePostFromMenu'])->name('deletePostFromMenu');
