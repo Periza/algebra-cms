@@ -60,9 +60,9 @@ Auth::routes();
 Route::group(['prefix' => 'menus'], function() {
     Route::get('/', [MenuController::class, 'getMenusView'])->name('menus');
     Route::get('/new', [MenuController::class, 'getNewMenuView'])->name('newMenu');
-    Route::post('/', [MenuController::class, 'saveNewMenu'])->name('menus');
-    Route::get('/edit/{menu}', [MenuController::class, 'menuEdit']);
+    Route::post('/', [MenuController::class, 'saveNewMenu'])->name('saveNewMenu');
+    Route::get('/edit/{menu}', [MenuController::class, 'menuEdit'])->name('menuEdit');
     Route::post('/{menu}', [MenuController::class, 'saveMenu']);
-    Route::delete('/{menu}', [MenuController::class, 'deleteMenu']);
+    Route::delete('/{menu}', [MenuController::class, 'deleteMenu'])->name('deleteMenu');
     Route::get('/details/{post}', [PostController::class, 'postDetails']);
 });

@@ -31,10 +31,18 @@
                     </div>
                 </td>
                 <td>
-                    <div>EDIT</div>
+                    <div>
+                        <a class="btn btn-primary" href="{{route('menuEdit', $menu)}}">EDIT</a>
+                    </div>
                 </td>
                 <td>
-                    <div>DELETE</div>
+                    <div>
+                        <a class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('menu-delete-form-{{$menu->id}}').submit()">DELETE</a>
+                        <form id="menu-delete-form-{{$menu->id}}" action="{{route('deleteMenu', $menu)}}" method="POST" style="display: non">
+                            <input type="hidden" name="_method", value="DELETE">
+                            {{csrf_field()}}
+                        </form>
+                    </div>
                 </td>
                 <td>
                     <div>DELETE POST FROM MENU</div>

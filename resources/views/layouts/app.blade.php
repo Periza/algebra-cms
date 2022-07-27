@@ -25,8 +25,12 @@
     <script defer>
         // remove messages after some time
         setTimeout(function() {
-            const collection = document.getElementsByClassName("alert");
-            console.log(collection);
+            let alerts = document.querySelectorAll('.alert');
+            alerts.forEach(
+                function(alert) {
+                    alert.remove();
+                }
+            );
         }, 2000);
     </script>
 </body>

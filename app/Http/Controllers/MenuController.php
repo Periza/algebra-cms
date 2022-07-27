@@ -24,7 +24,7 @@ class MenuController extends Controller
 
     public function getNewMenuView()
     {
-        return view('newmenu');
+        return view('menus.create');
     }
 
     public function saveNewMenu(Request $request)
@@ -33,7 +33,7 @@ class MenuController extends Controller
         $menu->name = $request->name;
         $menu->save();
 
-        return redirect("/menus");
+        return redirect("/menus")->with('success', 'Menu added!');
     }
 
     public function saveMenu(Request $request, Menu $menu)
@@ -48,7 +48,7 @@ class MenuController extends Controller
     public function deleteMenu(Request $request,  Menu $menu)
     {
         $menu->delete();
-        return redirect('/menus');
+        return redirect('/menus')->with('success', 'Menu deleted');;
     }
 
     public function menuEdit(Menu $menu)
