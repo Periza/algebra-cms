@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Create a new menu</h1>
-    <form action="{{route('saveNewMenu')}}" method="POST">
+    <form action="{{route('editMenu')}}" method="POST">
         <div class="form-group"><label for="name">Name: </label>
             <input type="text" name="name">
         </div>

@@ -32,7 +32,7 @@
                 </td>
                 <td>
                     <div>
-                        <a class="btn btn-primary" href="{{route('menuEdit', $menu)}}">EDIT</a>
+                        <a class="btn btn-primary" href="{{route('menuEditView', $menu)}}">EDIT</a>
                     </div>
                 </td>
                 <td>

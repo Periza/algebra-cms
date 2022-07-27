@@ -42,7 +42,7 @@ class MenuController extends Controller
         
         $menu->save();
 
-        return redirect("/menus");
+        return redirect("/menus")->with('success', 'Menu updated!');
     }
 
     public function deleteMenu(Request $request,  Menu $menu)
@@ -51,9 +51,9 @@ class MenuController extends Controller
         return redirect('/menus')->with('success', 'Menu deleted');;
     }
 
-    public function menuEdit(Menu $menu)
+    public function menuEditView(Menu $menu)
     {
-        return view('menuEdit', [
+        return view('menus.edit', [
             'menu' => $menu,
         ]);
     }
