@@ -11,6 +11,6 @@ class Menu extends Model
 
 
     public function posts() {
-        return $this->hasMany(Post::class, 'menu_post', 'menu_id', 'post_id')->orderBy('order', 'ASC')->withPivot(['order', 'name']);
+        return $this->belongsToMany(Post::class, 'menu_post', 'menu_id', 'post_id')->orderBy('order', 'ASC')->withPivot(['order', 'name']);
     }
 }

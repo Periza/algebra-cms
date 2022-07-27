@@ -24,7 +24,11 @@
                     <div>{{$menu->name}}</div>
                 </td>
                 <td>
-                    <div>POSTS/</div>
+                    <div>
+                        @foreach ($menu->posts as $post)
+                            <a class="btn btn-info" href="{{route('postDetails', $post)}}">{{$post->name}}</a>
+                        @endforeach
+                    </div>
                 </td>
                 <td>
                     <div>EDIT</div>
