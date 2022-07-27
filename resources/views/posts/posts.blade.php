@@ -53,4 +53,8 @@
         @endforeach
     </tbody>
 </table>
+
+@if(in_array(Auth::user()->role_id, [1,2,3]))
+<a class="btn btn-primary" href="{{route('newPostView')}}">CREATE POST</a>
+@endif
 @endsection

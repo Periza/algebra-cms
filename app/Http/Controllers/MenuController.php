@@ -60,7 +60,7 @@ class MenuController extends Controller
 
     public function addPostToMenuView()
     {
-        return view('menuPostEdit', [
+        return view('menus.menupostedit', [
             'menus' => Menu::get(), 'posts' => Post::get()
         ]);
     }
@@ -69,8 +69,6 @@ class MenuController extends Controller
             $menu = Menu::find($request->menu_id);
             $post = Post::find($request->post_id);
             $menu->posts()->attach($post->id, ['order' => $request->order, 'name' => $request->name]);
-            $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', 'Post je dodan!');
         
             return redirect('/menus');
     }

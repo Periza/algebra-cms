@@ -29,7 +29,7 @@ Route::get('/', function() {
 Route::get('/administration', [AdminController::class, 'getAdministrationView'])->name('administration');
 
 // ROLES
-Route::get('/roles', [AdminController::class, 'getRolesView']);
+Route::get('/roles', [AdminController::class, 'getRolesView'])->name('getRolesView');
 Route::get('/roles/{role}/edit', [AdminController::class, 'edit']);
 Route::put('/roles/{role}/edit', [AdminController::class, 'update'])->name('editRole');
 Route::get('/roles/create', [AdminController::class, 'newRole']);
@@ -59,7 +59,7 @@ Auth::routes();
 Route::group(['prefix' => 'menus'], function() {
     Route::get('/', [MenuController::class, 'getMenusView'])->name('menus');
     Route::get('/new', [MenuController::class, 'getNewMenuView'])->name('newMenu');
-    Route::post('/', [MenuController::class, 'saveNewMenu'])->name('saveNewMenu');
+    Route::post('/new', [MenuController::class, 'saveNewMenu'])->name('saveNewMenu');
     Route::get('/edit/{menu}', [MenuController::class, 'menuEditView'])->name('menuEditView');
     Route::put('/edit/{menu}', [MenuController::class, 'saveMenu'])->name('editMenu');
     Route::post('/{menu}', [MenuController::class, 'saveMenu']);
@@ -67,7 +67,8 @@ Route::group(['prefix' => 'menus'], function() {
     Route::get('/details/{post}', [PostController::class, 'postDetails']);
 });
 
+Route::post('/savePost', [MenuController::class, 'savePostToMenu']);
 Route::delete('/deletePost/{menu}/{post}', [MenuController::class, 'deletePostFromMenu'])->name('deletePostFromMenu');
 
-Route::get('/addPostToMenu', 'App\Http\Controllers\MenuController@addPostToMenuView')->name('addPostToMenu');
+Route::get('/addPostToMenu', [MenuController::class, 'addPostToMenuView'])->name('addPostToMenu');
 
